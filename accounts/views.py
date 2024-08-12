@@ -166,7 +166,7 @@ class UsersWithRoleUserView(APIView):
 
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([AllowAny,])
 def employee(request):
     serializer = UserAccountSerializer(data=request.data)
     if serializer.is_valid():
