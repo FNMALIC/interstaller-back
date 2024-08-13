@@ -1,17 +1,17 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-# from workstations.views import WorkstationViewSet 
-        # WorkstationMembershipViewSet
-# from agent_management.views import AgentManagerViewSet, AgentViewSet, ActivationViewSet, AccountBalanceViewSet, RegisterAgentManagerView
-
-
+from agent_management.views import (
+    ChefAgentViewSet,
+    AgentViewSet,
+    ClientViewSet,
+    ChefManagerViewSet
+)
 router = DefaultRouter()
-# router.register(r'workstations', WorkstationViewSet)
-# router.register(r'workstation_membership', WorkstationMembershipViewSet)
-# router.register(r'agent-managers', AgentManagerViewSet)
-# router.register(r'agents', AgentViewSet)
-# router.register(r'activations', ActivationViewSet)
-# router.register(r'account-balances', AccountBalanceViewSet)
+router.register(r'chef_agents', ChefAgentViewSet, basename='chef_agent')
+router.register(r'agents', AgentViewSet, basename='agent')
+router.register(r'clients', ClientViewSet, basename='client')
+router.register(r'chef_managers', ChefManagerViewSet, basename='chef_manager')
+
 
 urlpatterns = [
     path('', include(router.urls)),
